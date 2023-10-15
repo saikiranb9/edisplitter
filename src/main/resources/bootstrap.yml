@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: edisplitter  #service name
+server:
+  port: 9306
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always

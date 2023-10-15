@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: edisplitter
+  namespace: monitoring
+  labels:
+    k8s-app: edisplitter
+spec:
+  jobLabel: k8s-app
+  endpoints:
+  - path: /actuator/prometheus
+    port: web
+    interval: 1s
+    honorLabels: true
+  selector:
+    matchLabels:
+      k8s-app: edisplitter
+  namespaceSelector:
+    matchNames:
+    - edi-platform
